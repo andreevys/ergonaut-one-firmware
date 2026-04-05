@@ -2,46 +2,43 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-#define DEF 0
-#define LWR 1
-#define RSE 2
-#define ADJ 3
-#define BOOTL 4
-#define BOOTR 5
-
-&lt {
-    quick-tap-ms = <200>;
-};
-
-&mt {
-    quick-tap-ms = <200>;
-};
-
 / {
     combos {
         compatible = "zmk,combos";
 
-        boot_left_layer {
+        combo_esc {
             timeout-ms = <50>;
-            key-positions = <0 1>;
-            layers = <0 1 2 3>;
-            bindings = <&tog BOOTL>;
+            key-positions = <1 2>;
+            bindings = <&kp ESC>;
         };
 
-        boot_right_layer {
+        combo_backspace {
             timeout-ms = <50>;
-            key-positions = <34 35>;
-            layers = <0 1 2 3>;
-            bindings = <&tog BOOTR>;
+            key-positions = <9 10>;
+            layers = <0 2>;
+            bindings = <&kp BSPC>;
         };
-    };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
+        combo_delete {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&kp DEL>;
+        };
 
-        tri-layer {
-            if-layers = <LWR RSE>;
-            then-layer = <ADJ>;
+        boot_left {
+            timeout-ms = <50>;
+            slow-release;
+            layers = <0 1 2 3>;
+            key-positions = <0 24 5 29>;
+            bindings = <&mo 4>;
+        };
+
+        boot_right {
+            timeout-ms = <50>;
+            slow-release;
+            layers = <0 1 2 3>;
+            key-positions = <6 30 11 35>;
+            bindings = <&mo 5>;
         };
     };
 
@@ -49,63 +46,72 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            display-name = "MAIN";
+            display-name = "BASE";
             bindings = <
-                &mt LGUI RBKT   &kp Q       &kp W       &kp E       &kp R       &kp T         &kp Y       &kp U       &kp I       &kp O       &kp P         &kp LBKT
-                &mt LCTRL GRAVE &kp A       &kp S       &kp D       &kp F       &kp G         &kp H       &kp J       &kp K       &kp L       &kp SEMI      &mt RCTRL SQT
-                &mt LALT MINUS  &kp Z       &kp X       &kp C       &kp V       &kp B         &kp N       &kp M       &kp COMMA   &kp DOT     &kp FSLH      &mt RALT BSLH
-                                             &lt RSE TAB  &mt LSHFT SPACE  &lt LWR RET   &lt LWR ESC   &mt RSHFT BSPC &lt RSE DEL
+                &kp TAB     &kp Q                  &kp W                  &kp E      &kp R      &kp T              &kp Y      &kp U      &kp I      &kp O      &kp P              &mt RBKT LBKT
+                &kp LCTRL   &kp A                  &kp S                  &kp D      &kp F      &kp G              &kp H      &kp J      &kp K      &kp L      &kp SEMI           &mt BSLH SQT
+                &kp LSHFT   &kp Z                  &kp X                  &kp C      &kp V      &kp B              &kp N      &kp M      &kp COMMA  &kp DOT    &kp FSLH           &mt EQUAL MINUS
+                                                     &kp LGUI              &mo 1      &kp SPACE  &kp RET            &mo 2      &kp RALT
             >;
         };
 
         lower_layer {
-            display-name = "SYM";
+            display-name = "LOWER";
             bindings = <
-                &mt LGUI F1     &kp F2      &kp F3      &kp F4      &kp F5      &kp F6        &kp F7      &kp F8      &kp F9      &kp F10     &kp F11       &kp F12
-                &mt LCTRL PLUS  &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT     &kp CARET   &kp AMPS    &kp STAR    &kp LPAR    &kp RPAR      &mt RCTRL MINUS
-                &mt LALT EQUAL  &kp N1      &kp N2      &kp N3      &kp N4      &kp N5        &kp N6      &kp N7      &kp N8      &kp N9      &kp N0        &kp RALT
-                                             &trans      &trans      &trans       &trans        &trans      &trans
+                &kp TAB     &kp N1                 &kp N2                 &kp N3     &kp N4     &kp N5             &kp N6     &kp N7     &kp N8     &kp N9     &kp N0             &kp STAR
+                &kp LCTRL   &kp MINUS              &kp EQUAL              &kp SEMI   &kp LBKT   &kp RBKT           &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &kp LBKT           &kp RBKT
+                &kp LSHFT   &kp LG(Z)              &kp LG(X)              &kp LG(C)  &kp LG(V)  &trans             &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &kp LPAR           &kp RPAR
+                                                     &kp LGUI              &trans     &kp SPACE  &kp RET            &trans     &kp RALT
             >;
         };
 
         raise_layer {
-            display-name = "NUM";
+            display-name = "RAISE";
             bindings = <
-                &mt LGUI KP_NUM &kp KP_SLASH &kp KP_N7   &kp KP_N8   &kp KP_N9   &kp KP_MINUS  &kp C_VOL_UP &kp HOME    &kp PSCRN   &kp PG_UP   &kp SLCK      &kp CLCK
-                &mt LCTRL EQUAL &kp KP_MULTIPLY &kp KP_N4 &kp KP_N5  &kp KP_N6   &kp KP_PLUS   &kp C_MUTE   &kp LEFT    &kp UP      &kp RIGHT   &kp INS       &mt RCTRL K_APP
-                &kp LALT        &kp KP_N0   &kp KP_N1   &kp KP_N2   &kp KP_N3   &kp KP_DOT    &kp C_VOL_DN &kp END     &kp DOWN    &kp PG_DN   &kp PAUSE_BREAK &kp RALT
-                                             &trans      &trans      &trans       &trans        &trans      &trans
+                &kp TAB     &kp C_BRIGHTNESS_DEC   &kp C_BRIGHTNESS_INC   &kp HASH   &kp DLLR   &kp PRCNT          &kp F1     &kp F2     &kp F3     &kp F4     &kp C_PP           &kp C_MUTE
+                &kp LCTRL   &trans                 &trans                 &trans     &trans     &trans             &kp F5     &kp F6     &kp F7     &kp F8     &kp C_AC_FORWARD   &kp C_VOL_UP
+                &kp LSHFT   &trans                 &trans                 &trans     &trans     &trans             &kp F9     &kp F10    &kp F11    &kp F12    &kp C_PREVIOUS     &kp C_VOL_DN
+                                                     &kp LGUI              &trans     &kp SPACE  &kp RET            &trans     &kp RALT
             >;
         };
 
-        adjust_layer {
-            display-name = "ADJ";
+        bt_layer {
+            display-name = "BT";
             bindings = <
-                &none        &studio_unlock &none        &none        &none        &none         &none        &none        &none        &none        &studio_unlock &none
-                &bt BT_CLR   &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4  &bt BT_SEL 4 &bt BT_SEL 3 &bt BT_SEL 2 &bt BT_SEL 1 &bt BT_SEL 0  &bt BT_CLR
-                &sys_reset   &none          &none        &none        &none        &none         &none        &none        &none        &none        &none         &sys_reset
-                                             &trans       &none        &trans        &none         &trans       &trans
+                &kp TAB     &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
+                &kp LCTRL   &bt BT_SEL 0           &bt BT_SEL 1           &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans     &bt BT_CLR &trans     &trans     &trans             &trans
+                &kp LSHFT   &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
+                                                     &kp LGUI              &trans     &kp SPACE  &kp RET            &trans     &kp RALT
             >;
         };
 
         boot_left_layer {
             display-name = "BOOTL";
             bindings = <
-                &bootloader  &none &none &none &none &none    &none &none &none &none &none &none
-                &tog BOOTL   &none &none &none &none &none    &none &none &none &none &none &none
-                &none        &none &none &none &none &none    &none &none &none &none &none &none
-                                      &trans &trans &trans    &trans &trans &trans
+                &trans      &trans                 &trans                 &trans     &trans     &bootloader        &trans     &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
+                                                     &trans                &trans     &trans     &trans             &trans     &trans
             >;
         };
 
         boot_right_layer {
             display-name = "BOOTR";
             bindings = <
-                &none &none &none &none &none &none          &none &none &none &none &none &bootloader
-                &none &none &none &none &none &none          &none &none &none &none &none &tog BOOTR
-                &none &none &none &none &none &none          &none &none &none &none &none &none
-                                      &trans &trans &trans    &trans &trans &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &bootloader &trans    &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans    &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans    &trans     &trans     &trans             &trans
+                                                     &trans                &trans     &trans     &trans             &trans      &trans
             >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        bt_tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
