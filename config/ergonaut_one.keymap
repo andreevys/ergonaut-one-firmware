@@ -3,7 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-    combos {
+       combos {
         compatible = "zmk,combos";
 
         combo_esc {
@@ -25,6 +25,21 @@
             bindings = <&kp DEL>;
         };
 
+        boot_left {
+            timeout-ms = <50>;
+            slow-release;
+            layers = <0 1 2 3>;
+            key-positions = <0 24 5 29>;
+            bindings = <&mo 4>;
+        };
+
+        boot_right {
+            timeout-ms = <50>;
+            slow-release;
+            layers = <0 1 2 3>;
+            key-positions = <6 30 11 35>;
+            bindings = <&mo 5>;
+        };
     };
 
     keymap {
@@ -73,19 +88,19 @@
         boot_left_layer {
             display-name = "BOOTL";
             bindings = <
-                &trans      &trans                 &trans                 &trans     &trans     &bootloader        &trans     &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans     &trans     &trans     &trans     &trans             &trans
-                                                     &trans                &trans     &trans     &trans             &trans     &trans
+                &trans      &trans                 &trans                 &trans     &trans     &bootloader        &trans      &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
+                                                     &trans                &trans     &trans     &trans             &trans      &trans
             >;
         };
 
         boot_right_layer {
             display-name = "BOOTR";
             bindings = <
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &bootloader &trans    &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans    &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans    &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &bootloader &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
+                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
                                                      &trans                &trans     &trans     &trans             &trans      &trans
             >;
         };
