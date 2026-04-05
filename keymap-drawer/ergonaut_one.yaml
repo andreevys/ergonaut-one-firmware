@@ -181,3 +181,7 @@ combos:
   l: [BASE, RAISE]
 - p: [21, 22]
   k: ⌦
+- p: [0, 24, 5, 29]
+  k: Boot
+- p: [6, 30, 11, 35]
+  k: Boot
