@@ -88,20 +88,20 @@
         boot_left_layer {
             display-name = "BOOTL";
             bindings = <
-                &trans      &trans                 &trans                 &trans     &trans     &bootloader        &trans      &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
-                                                     &trans                &trans     &trans     &trans             &trans      &trans
+                &trans      &trans &trans &trans &bootloader &trans    &trans &trans &trans &trans &trans &trans
+                &trans      &trans &trans &trans &trans      &trans    &trans &trans &trans &trans &trans &trans
+                &trans      &trans &trans &trans &trans      &trans    &trans &trans &trans &trans &trans &trans
+                                      &trans &trans &trans    &trans    &trans &trans
             >;
         };
 
         boot_right_layer {
             display-name = "BOOTR";
             bindings = <
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &bootloader &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
-                &trans      &trans                 &trans                 &trans     &trans     &trans             &trans      &trans     &trans     &trans     &trans             &trans
-                                                     &trans                &trans     &trans     &trans             &trans      &trans
+                &trans      &trans &trans &trans &trans &trans         &trans &bootloader &trans &trans &trans &trans
+                &trans      &trans &trans &trans &trans &trans         &trans &trans      &trans &trans &trans &trans
+                &trans      &trans &trans &trans &trans &trans         &trans &trans      &trans &trans &trans &trans
+                                      &trans &trans &trans             &trans &trans      &trans
             >;
         };
     };
