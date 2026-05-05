@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: ergonaut_one}
 layers:
-  BASE:
+  MAC:
   - ↹
   - Q
   - W
@@ -131,13 +131,13 @@ layers:
   - Alt
   BT:
   - ↹
+  - {t: MAC, h: toggle}
+  - {t: LINUX, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {t: MAC, h: toggle}
+  - {t: LINUX, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -258,18 +258,190 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  LINUX:
+  - ↹
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - Y
+  - U
+  - I
+  - O
+  - P
+  - {t: '[', h: ']'}
+  - Gui
+  - A
+  - S
+  - D
+  - F
+  - G
+  - H
+  - J
+  - K
+  - L
+  - ;
+  - {t: '''', h: \}
+  - Shift
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - N
+  - M
+  - ','
+  - .
+  - /
+  - {t: '-', h: '='}
+  - Ctrl
+  - L-LOWER
+  - ␣
+  - ⏎
+  - L-RAISE
+  - Alt
+  L-LOWER:
+  - ↹
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
+  - '*'
+  - Gui
+  - '-'
+  - '='
+  - ;
+  - '['
+  - ']'
+  - ←
+  - ↓
+  - ↑
+  - →
+  - '['
+  - ']'
+  - Shift
+  - Ctl+Z
+  - Ctl+X
+  - Ctl+C
+  - Ctl+V
+  - {t: ▽, type: trans}
+  - Home
+  - Page Down
+  - Page Up
+  - End
+  - (
+  - )
+  - Ctrl
+  - {type: held}
+  - ␣
+  - ⏎
+  - {t: ▽, type: trans}
+  - Alt
+  L-RAISE:
+  - ↹
+  - BRIGHTNESS DEC
+  - BRIGHTNESS INC
+  - '#'
+  - $
+  - '%'
+  - F1
+  - F2
+  - F3
+  - F4
+  - ⏯
+  - MUTE
+  - Gui
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F5
+  - F6
+  - F7
+  - F8
+  - AC FORWARD
+  - Vol Up
+  - Shift
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F9
+  - F10
+  - F11
+  - F12
+  - PREVIOUS
+  - Vol Down
+  - Ctrl
+  - {t: ▽, type: trans}
+  - ␣
+  - ⏎
+  - {type: held}
+  - Alt
+  L-BT:
+  - ↹
+  - {t: MAC, h: toggle}
+  - {t: LINUX, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: MAC, h: toggle}
+  - {t: LINUX, h: toggle}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Gui
+  - BT 1
+  - BT 2
+  - BT 3
+  - BT 4
+  - BT 5
+  - {t: ▽, type: trans}
+  - BT CLR
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Shift
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Ctrl
+  - {type: held}
+  - ␣
+  - ⏎
+  - {type: held}
+  - Alt
 combos:
 - p: [1, 2]
   k: Esc
   draw_separate: true
 - p: [9, 10]
   k: ⌫
-  l: [BASE, RAISE]
+  l: [MAC, RAISE, LINUX, L-RAISE]
 - p: [21, 22]
   k: ⌦
 - p: [0, 24, 5, 29]
   k: BOOTL
-  l: [BASE, LOWER, RAISE, BT]
+  l: [MAC, LOWER, RAISE, BT, LINUX, L-LOWER, L-RAISE, L-BT]
 - p: [6, 30, 11, 35]
   k: BOOTR
-  l: [BASE, LOWER, RAISE, BT]
+  l: [MAC, LOWER, RAISE, BT, LINUX, L-LOWER, L-RAISE, L-BT]
